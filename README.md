@@ -1,14 +1,8 @@
-## Heroku buildpack: Erlang
+## Cloud Foundry buildpack: Erlang
 
-This is a Heroku buildpack for Erlang apps. It uses [Rebar](https://github.com/basho/rebar).
+This is a Cloud Foundry buildpack for Erlang apps. It uses [Rebar](https://github.com/basho/rebar).
 
-
-### Configure your Heroku App
-
-    $ heroku config:add BUILDPACK_URL="https://github.com/archaelus/heroku-buildpack-erlang.git" -a YOUR_APP
-
-or
-    $ heroku create --buildpack "https://github.com/archaelus/heroku-buildpack-erlang.git"
+It was adapted from a [Heroku Buildpack](https://github.com/archaelus/heroku-buildpack-erlang) with just a couple things changed to be CF compatible.
 
 ### Select an Erlang version
 
@@ -31,8 +25,14 @@ To select the version for your app:
     $ echo OTP_R15B01 > .preferred_otp_version
     $ git commit -m "Select R15B01 as preferred OTP version" .preferred_otp_version
 
-### Build your Heroku App
+### Create a Procfile for CF to run
 
-    $ git push heroku master
+Rebar projects must be run with the appliaation name, so it must be defined in a Procfile
+
+    $ echo "web: erl -pa ebin deps/*/ebin -noshell -s <app name>" > Procfile
+
+### Build your CF App
+
+    $ cf push <app name> -b https://github.com/archaelus/heroku-buildpack-erlang
 
 You may need to write a new commit and push if your code was already up to date.
