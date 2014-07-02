@@ -33,6 +33,6 @@ Rebar projects must be run with the appliaation name, so it must be defined in a
 
 ### Build your CF App
 
-    $ cf push <app name> -b https://github.com/archaelus/heroku-buildpack-erlang
+    $ cf push <app name> -b https://github.com/spiegela/cf-buildpack-erlang
 
 You may need to write a new commit and push if your code was already up to date.
