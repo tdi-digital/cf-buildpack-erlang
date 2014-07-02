@@ -30,6 +30,7 @@ To select the version for your app:
 Rebar projects must be run with the appliaation name, so it must be defined in a Procfile
 
     $ echo "web: erl -pa ebin deps/*/ebin -noshell -s <app name>" > Procfile
+    $ git commit -m "Added Procfile" Procfile
 
 ### Build your CF App
 
