@@ -1,6 +1,7 @@
 export PATH=/app/otp/bin:bin:/usr/bin:/bin
 echo "xxxxxx"
-echo pwd
-echo *
+echo /*
 echo /app/*
-erl -pa /app/otp/lib -run tumbleweed start
+echo /app/otp/*
+cd /app
+erl -pa /app/ebin -run tumbleweed start
